@@ -1,0 +1,9 @@
+
+  <h1>Crea un nuevo pin</h1>
+  <div class="row">
+  <div class="col-md-6">
+    <%= render 'form', pin: @pin, :class => "btn btn-default btn-color", :style => "color:white;" %>
+  </div>
+</div>
+<br>
+  <p><%= link_to 'Back', pins_path, :class => "btn btn-default btn-color", :style => "color:white;" %></p>

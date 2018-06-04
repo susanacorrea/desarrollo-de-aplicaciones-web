@@ -1,0 +1,40 @@
+<h1>Listing Pins</h1>
+<div id=container>
+  <% @pins.each do |pin| %>
+    <div class="item" style="width:25%; margin:10px" >
+      <div class="thumbnail">
+        <%= pin.name %>
+        <%= image_tag(pin.photo, :class => 'img-responsive') %>
+        <%= pin.description %>
+        <div class="buttons" style="margin-top:10px;margin-bottom:10px">
+          <%= link_to 'Show', pin, :class => "btn btn-default btn-color", :style => "color:white;" %>
+          <%= link_to 'Edit', edit_pin_path(pin), :class => "btn btn-default btn-color", :style => "color:white;" %>
+          <% if user_signed_in? %>
+          <%= link_to 'Destroy', pin, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-default btn-color", :style => "color:white;" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+<br>
+  <% if user_signed_in? %>
+  <%= link_to 'New Pin', new_pin_path, :class => "btn btn-default btn-color", :style => "color:white;" %>
+  <% end %>
+  </div>
+
+<script type="text/javascript">
+var $container = $('#container');
+$container.masonry({
+  columWidth: 200,
+  itemSElector: 'item'
+});
+$(window).load(function(){
+  var $container = $('#container');
+  $container.masonry({
+    columWidth: 200,
+    itemSElector: 'item'
+  });
+})
+
+  </script>
